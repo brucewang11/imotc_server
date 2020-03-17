@@ -30,7 +30,6 @@ func main(){
 	dao.InitDB()
 	//init log
 	log.LoadConfiguration("./static/log.xml")
-
 	//init gin
 	gin.SetMode(common.HttpInfo.GinMode)
 	router := router.InitRouter()

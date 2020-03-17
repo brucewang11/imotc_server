@@ -112,13 +112,13 @@ func(this *BaseDao) List(condition interface{},rows interface{}) error{
 	return err
 }
 //查询某一条
-func(this *BaseDao) First(rows interface{}) (interface{},error){
-	err := this.Conn.First(rows).Error
-	return rows,err
+func(this *BaseDao) First(model interface{},where interface{}) (interface{},error){
+	err := this.Conn.First(model,where).Error
+	return model,err
 }
 //分页查询
-func(this *BaseDao) ListByPage (condition interface{},rows interface{},page *Page) error{
-	err := this.Conn.Where(condition).Limit(page.PageSize).Offset((page.PageIndex - 1) * page.PageSize).Find(rows).Error
+func(this *BaseDao) ListByPage (condition interface{},rows interface{},page *Page,order string) error{
+	err := this.Conn.Where(condition).Order(order,true).Limit(page.PageSize).Offset((page.PageIndex - 1) * page.PageSize).Find(rows).Error
 	return err
 }
 //条数

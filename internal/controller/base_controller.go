@@ -33,8 +33,8 @@ func init (){
 		log.Error("读取json错误")
 		panic(err)
 	}
-	AllMsg[headerZhLang] = msgEn
-	AllMsg[headerEnLang] = msgCh
+	AllMsg[headerZhLang] = msgCh
+	AllMsg[headerEnLang] = msgEn
 
 }
 
