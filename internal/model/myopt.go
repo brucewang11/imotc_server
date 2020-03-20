@@ -33,6 +33,7 @@ type Ask struct {
 	PayType  string   `gorm:"column:pay_type"`
 	BankName string  `gorm:"column:bank_name"`
 	BankAddress string  `gorm:"column:bank_address"`
+	AskName	string   `gorm:"column:ask_name"`
 }
 
 func (ask Ask) TableName() string {
@@ -68,6 +69,7 @@ type Order struct {
 	CreateTime int64 `gorm:"column:create_time"`
 	UnitPrice   float64 `gorm:"column:unit_price"`
 	Fee        float64  `gorm:"column:fee"`
+	AskName   string   `gorm:"column:ask_name"`
 
 }
 

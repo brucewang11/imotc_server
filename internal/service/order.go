@@ -22,6 +22,7 @@ func CreateOrder(vo *vo.OrderVo) *CodeModel{
 		fmt.Println("createorder",err)
 		return &CodeModel{Code:2013}
 	}
+	vo.UnitPrice = ask.Price
 	if vo.Price < ask.MinLimit || (vo.Price>ask.MaxLimit){
 		tem := map[string]interface{}{
 			"min":decimal.NewFromFloat(ask.MinLimit),
@@ -47,6 +48,7 @@ func CreateOrder(vo *vo.OrderVo) *CodeModel{
 		CreateTime:time.Now().UnixNano() / 1e6,
 		Fee:fee,
 		UnitPrice:vo.UnitPrice,
+		AskName:ask.AskName,
 
 	}
 	orderDao := &dao.OrderDao{BaseDao:dao.NewBaseDao(nil)}
